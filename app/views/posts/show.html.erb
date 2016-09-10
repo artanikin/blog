@@ -1,6 +1,16 @@
-<h1><%= @post.title %></h1>
-<%= link_to 'Изменить', edit_post_path(@post) %>
-|
-<%= link_to 'Удалить', post_path(@post), method: :delete, data: { confirm: 'Вы уверены?' } %>
+<article class="post">
+  <section class="post-head">
+    <h1><%= @post.title %></h1>
+    <small>
+      <time><%= @post.created_at.to_date.strftime("%d %B, %Y") %></time>
+      |
+      <%= link_to 'Изменить', edit_post_path(@post) %>
+      |
+      <%= link_to 'Удалить', post_path(@post), method: :delete, data: { confirm: 'Вы уверены?' } %>
+    </small>
+  </section>
 
-<p><%= @post.body %></p>
+  <section class="post-body">
+    <%= @post.body %>
+  </section>
+</article>
