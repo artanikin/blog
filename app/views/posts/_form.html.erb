@@ -27,7 +27,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
-    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary' %>
+    <%= f.submit t('.submit', action: @post.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-primary' %>
+    <%= link_to t('common.back'), :back, class: 'btn btn-outline-secondary' %>
   </div>
 <% end %>
