@@ -35,10 +35,10 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
           <%= yield %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
             <%= link_to tag.name, tag_path(tag.name), class: css_class %>
           <% end %>
