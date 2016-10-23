@@ -1,3 +1,7 @@
 <h1><%= t('.title') %></h1>
 
-<%= render @posts %>
+<section id='posts'>
+  <%= render @posts %>
+</section>
+
+<%= will_paginate @posts, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>

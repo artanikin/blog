@@ -2,6 +2,9 @@ ru:
   common:
     errors: 'При заполнении формы возникли ошибки'
     back: 'Назад'
+  will_paginate:
+    previous_label: '&larr; Туда'
+    next_label: 'Сюда &rarr;'
   posts:
     index:
       title: 'Статьи'
