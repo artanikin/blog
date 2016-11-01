@@ -3,6 +3,10 @@
     <h2><%= link_to post.title, post_path(post) %></h2>
     <small>
       <time><%= post.created_at.to_date.strftime("%d %B, %Y") %></time>
+      <% if post.category.present? %>
+        |
+        <%= link_to post.category.name, post.category %>
+      <% end %>
       |
       <%= link_to 'Изменить', edit_post_path(post) %>
       |
