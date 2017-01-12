@@ -17,7 +17,7 @@
 
   <div class="form-group">
     <%= f.label :parent_id %>
-    <%= f.collection_select :parent_id, Category.where("id != #{@category.id}").order(:name), :id, :name, { include_blank: true }, class: 'form-control' %>
+    <%= f.collection_select :parent_id, @categories, :id, :name, { include_blank: true }, class: 'form-control' %>
   </div>
 
   <div class="form-group">
