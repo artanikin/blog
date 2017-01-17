@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161101201115) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20161101201115) do
     t.datetime "updated_at",  null: false
     t.string   "image"
     t.integer  "category_id"
-    t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["category_id"], name: "index_posts_on_category_id", using: :btree
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20161101201115) do
     t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_taggings_on_post_id"
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["post_id"], name: "index_taggings_on_post_id", using: :btree
+    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
@@ -51,4 +54,6 @@ ActiveRecord::Schema.define(version: 20161101201115) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "taggings", "posts"
+  add_foreign_key "taggings", "tags"
 end
