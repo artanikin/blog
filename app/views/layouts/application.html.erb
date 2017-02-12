@@ -24,7 +24,22 @@
               </li>
             <% end %>
           </ul>
-          <%= link_to 'Новая статья', new_post_path, class: 'btn btn-outline-primary pull-xs-right' %>
+          <%# <%= link_to 'Новая статья', new_post_path, class: 'btn btn-outline-primary pull-xs-right' %1> %>
+
+          <ul class="navbar-nav pull-xs-right">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Вход", new_user_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Регистрация", new_user_registration_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </nav>
     </div>
@@ -33,7 +48,8 @@
       <div class="row">
         <div class="col-md-12">
           <% flash.each do |name, message| %>
-            <div class="alert alert-<%= name %>">
+            <div class="alert <%= bootstrap_class_for(name) %>">
+              <button class="close" data-dismiss="alert">&times;</button>
               <%= message %>
             </div>
           <% end %>
