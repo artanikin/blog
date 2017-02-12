@@ -8,20 +8,22 @@ ru:
   posts:
     index:
       title: 'Статьи'
-    new:
-      title: 'Новая статья'
-    edit:
-      title: 'Редактирование статьи'
-    form:
-      submit:
-        '%{action} статью'
-  categories:
-    index:
-      title: 'Категории'
-    new:
-      title: 'Новая категория'
-    edit:
-      title: 'Редактирование категории'
-    form:
-      submit:
-        '%{action} категорию'
+  admin:
+    posts:
+      new:
+        title: 'Новая статья'
+      edit:
+        title: 'Редактирование статьи'
+      form:
+        submit:
+          '%{action} статью'
+    categories:
+      index:
+        title: 'Категории'
+      new:
+        title: 'Новая категория'
+      edit:
+        title: 'Редактирование категории'
+      form:
+        submit:
+          '%{action} категорию'

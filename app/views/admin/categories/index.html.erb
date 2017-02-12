@@ -1,7 +1,7 @@
 <h1><%= t('.title') %></h1>
 
 <div class="buttons_panel">
-  <%= link_to 'Новая категория', new_category_path, class: 'btn btn-outline-primary btn-sm' %>
+  <%= link_to 'Новая категория', new_admin_category_path, class: 'btn btn-outline-primary btn-sm' %>
 </div>
 
 <section id="categories">
@@ -21,8 +21,8 @@
           <td><%= category.name %></td>
           <td><%= category.parent.name if category.parent.present? %></td>
           <td>
-            <%= link_to 'Изменить', edit_category_path(category), class: 'btn btn-outline-primary btn-sm'  %>
-            <%= link_to 'Удалить', category_path(category), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-outline-danger btn-sm'  %>
+            <%= link_to 'Изменить', edit_admin_category_path(category), class: 'btn btn-outline-primary btn-sm'  %>
+            <%= link_to 'Удалить', admin_category_path(category), method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-outline-danger btn-sm'  %>
           </td>
         </tr>
       <% end %>

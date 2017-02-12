@@ -1,5 +1,9 @@
 <h1><%= t('.title') %></h1>
 
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to 'Новая статья', new_admin_post_path, class: 'btn btn-outline-primary btn-sm' %>
+<% end %>
+
 <section id='posts'>
   <%= render @posts %>
 </section>
