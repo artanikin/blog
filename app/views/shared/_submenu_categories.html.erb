@@ -1,4 +1,4 @@
-<ul class="nav nav-pills nav-stacked nested_nav">
+<ul class="subnav nav-pills nav-stacked nested_nav">
   <% categories.each do |category, children| %>
     <li>
       <%= link_to category.name, category, class: "nav-link #{'active' if current_page?(category_path(category)) || @post.present? && @post.category == category}" %>
