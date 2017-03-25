@@ -11,4 +11,5 @@ default: &default
 
 development:
   <<: *default
+  user: postgres
   database: blog_dev
