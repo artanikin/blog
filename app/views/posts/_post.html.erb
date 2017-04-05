@@ -7,6 +7,8 @@
         |
         <%= link_to post.category.name, post.category %>
       <% end %>
+      |
+      <%= link_to post.title, post_path(post, anchor: "disqus_thread"), data: { "disqus-identifier" => "#{post.id}" } %>
       <% if user_signed_in? && current_user.admin? %>
         |
         <%= link_to 'Изменить', edit_admin_post_path(post) %>
