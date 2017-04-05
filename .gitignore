@@ -19,6 +19,7 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+config/database.yml
 
 public/uploads
 .DS_Store
