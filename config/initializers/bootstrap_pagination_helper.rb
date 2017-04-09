@@ -1,3 +1,6 @@
+require 'will_paginate/view_helpers/action_view'
+require 'will_paginate/view_helpers/link_renderer'
+
 module BootstrapPaginationHelper
   class LinkRenderer < WillPaginate::ActionView::LinkRenderer
     protected
@@ -34,7 +37,7 @@ module BootstrapPaginationHelper
       end
 
       def html_container(html)
-        tag(:nav, tag(:ul, html), container_attributes)
+        tag(:nav, tag(:ul, html, class: "pagination"), container_attributes)
       end
 
     private
