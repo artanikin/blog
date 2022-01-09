@@ -1,0 +1,12 @@
+libmysqlclient-dev
+mysql-client
+libxslt-dev
+libxml2-dev
+imagemagick
+openssh-client
+curl
+gnupg
+locales
+locales-all
+vim
+libicu-dev

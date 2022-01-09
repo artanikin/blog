@@ -11,8 +11,9 @@ default: &default
 
 development:
   <<: *default
-  user:
-  password:
+  host: postgres
+  user: blog_user
+  password: blog_password
   port: 5432
   database: blog_dev
 

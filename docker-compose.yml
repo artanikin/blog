@@ -1,0 +1,65 @@
+version: '3.7'
+services:
+  app: &app
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        RUBY_VERSION: '2.4.10'
+        BUNDLER_VERSION: '1.17.3'
+        NODE_MAJOR: '12'
+    image: blog:0.0.1
+    tmpfs:
+      - /tmp
+
+  rails:
+    <<: *app
+    volumes: 
+      - .:/var/www/blog
+      - ./tmp/docker/log/rails:/var/www/blog/log
+      - ./tmp/docker/log/sockets:/var/www/blog/sockets
+      - bundle:/bundle
+    environment:
+      - NODE_MAJOR=${NODE_MAJOR}
+      - RAILS_ENV=development
+    command:
+      blog
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:13
+    volumes:
+      - ./tmp/docker/postgres/data:/var/lib/postgresql/data
+      - ./docker/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d/
+    environment:
+      - POSTGRES_DB=blog_dev
+      - POSTGRES_USER=blog_user
+      - POSTGRES_PASSWORD=blog_password
+    ports:
+      - 5432
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 5s
+
+  redis:
+    image: redis:5-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - 6379
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  bundle:
+  postgres:
+  redis:
